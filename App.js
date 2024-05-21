@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/navbar';
+import Home from './components/home';
+import Product from './components/product';
+import About from './components/about';
+import Contact from './components/contact';
+import Blog from './components/blog';
+import Testimonials from './components/testimonials';
+import Faq from './components/faq';
+import Footer from './components/footer';
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="components/product.js">
+          <Product />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/blog">
+          <Blog />
+        </Route>
+      </Switch>
+      <Testimonials />
+      <Faq />
+      <Footer />
+    </Router>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
